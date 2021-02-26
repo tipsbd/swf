@@ -15,18 +15,44 @@
 </head>
 <body>
 <div id="container"></div>
+  <script>
+function getParam ( sname )
+{
+  var params = location.search.substr(location.search.indexOf("?")+1);
+  var sval =  params.replace("sv=", "");
+  
+  return sval;
+}
+var sv = getParam("sv");
 
+</script>
+<script>
+  var responseText = ''+sv+'';
+  urlArry = responseText.split(',');
+  start = true;
+  num_of_urlArry = urlArry.length;
+  index_of_urlArry = 0;
+</script>
+    
 <script>
     window.RufflePlayer = window.RufflePlayer || {};
-    window.addEventListener("load", (event) => {
-        const ruffle = window.RufflePlayer.newest();
-        const player = ruffle.createPlayer();
-        const container = document.getElementById("container");
-        container.appendChild(player);
-        player.load("movie.swf");
+
+    document.addEventListener("DOMContentLoaded", function () {
+        let url = new URL(window.location.href);
+        let file = url.searchParams.get('file');
+
+        if (!file) {
+            console.log("No file parameter defined");
+            return;
+        }
+
+        let ruffle = window.RufflePlayer.newest();
+        let player = Object.assign(document.getElementById("container").appendChild(ruffle.createPlayer()), {
+            style: 'width: 100vw; height: 100vh',
+        });
+        player.load(""+sv+"");
     });
 </script>
 <script src="ruffle.js"></script>
-
 </body>
 </html>
