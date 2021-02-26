@@ -7,7 +7,6 @@
     <style>
         html, body, #container {
             margin: 0;
-          
             padding: 0;
             height: 100%;
             width:100%;
@@ -16,18 +15,16 @@
     </style>
 </head>
 <body>
-<div id="container">
+<div id="container"/>
 
   <script>
 function getParam ( sname )
 {
   var params = location.search.substr(location.search.indexOf("?")+1);
   var sval =  params.replace("sv=", "");
-  
   return sval;
 }
 var sv = getParam("sv");
-
 </script>
 <script>
   var responseText = ''+sv+'';
@@ -45,12 +42,12 @@ var sv = getParam("sv");
         const container = document.getElementById("container");
         container.appendChild(player);
         player.load(""+sv+"");
-       style: 'width: 100vw; height: 100vh';
+       
     });
 </script>
    
 <script src="ruffle.js"></script>
-    </div>
+    
     
 </body>
 </html>
